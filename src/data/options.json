@@ -1,0 +1,27 @@
+[
+    {
+        "id" : 1,
+        "name" : "Max",
+        "disabled" : false
+    },
+    {
+        "id" : 2,
+        "name" : "John",
+        "disabled" : false
+    },
+    {
+        "id" : 3,
+        "name" : "Sally",
+        "disabled" : false
+    },
+    {
+        "id" : 4,
+        "name" : "Gary",
+        "disabled" : false
+    },
+    {
+        "id" : 5,
+        "name" : "Anne",
+        "disabled" : true
+    }
+]
