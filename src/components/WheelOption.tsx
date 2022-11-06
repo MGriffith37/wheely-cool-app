@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Col,
   Form,
@@ -6,8 +5,6 @@ import {
   InputGroup,
   Button,
   FloatingLabel,
-  Container,
-  FormControl,
 } from "react-bootstrap";
 import { useWheelOption } from "../context/WheelOptionContext";
 
@@ -33,6 +30,7 @@ export function WheelOption({ id }: WheelOptionProps) {
   console.log(
     `option: ${option} and id: ${id} and optionNumber: ${optionNumber}`
   );
+  // TODO: Need to reduce size of component and store child components as their own components
   return (
     <Form.Group as={Row} key={id} className="mb-3 align-items-center">
       <Col xs={2} md={1} align="left">
@@ -52,7 +50,6 @@ export function WheelOption({ id }: WheelOptionProps) {
             label={`Option #${optionNumber}`}
           >
             <Form.Control
-              // disabled={item.disabled}
               placeholder={`Option #${optionNumber}`}
               value={option}
               onChange={(e) => updateOption(id, e.target.value)}
@@ -63,7 +60,7 @@ export function WheelOption({ id }: WheelOptionProps) {
                 if (event.key === "Enter") {
                   addDefaultOption();
                 } else if (
-                  // To Do - autofocus back up the chain, so can backspace the whole lot easily
+                  // TODO - autofocus back up the chain, so can backspace the whole lot easily
                   (event.key === "Backspace" || event.key === "Delete") &&
                   !option
                 ) {

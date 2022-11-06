@@ -1,7 +1,7 @@
 // @ts-ignore
 import WheelComponent from "react-wheel-of-prizes";
 import { useWheelOption } from "../context/WheelOptionContext";
-import { Container, Stack, Nav, Col, Row } from "react-bootstrap";
+import { Stack, Row } from "react-bootstrap";
 import { useState } from "react";
 
 export function Wheel() {
@@ -15,6 +15,9 @@ export function Wheel() {
     setWheelWinner(winner);
   };
 
+  //TODO: Center cheeky wheel and probs create my own component that does it
+  //TODO: update wording to be dynamic so it can be quickly updated in future
+  //TODO: Dynamic headers need better logic
   return (
     <Stack gap={2} className="col-xs-12 mx-auto text-center">
       <h1>Spin the Wheel</h1>
@@ -23,7 +26,8 @@ export function Wheel() {
         webpage is never center!
       </p>
       <h2>{wheelPrompt}</h2>
-      <h1>{`${wheelWinner}!!!`}</h1>
+      <h1>{wheelWinner != null ? `${wheelWinner}!!!` : ""}</h1>
+
       <Row>
         <WheelComponent
           segments={segments}

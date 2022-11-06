@@ -34,6 +34,7 @@ export function useWheelOption() {
   return useContext(WheelOptionContext);
 }
 
+// TODO: needs cleaning up, too many duplicate objects being passed around
 export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
   const [wheelOptions, setWheelOptions] = useState<WheelOption[]>([
     { id: 1, name: "", colour: generateRandomColourHex() },
