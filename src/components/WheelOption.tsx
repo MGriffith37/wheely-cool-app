@@ -35,7 +35,7 @@ export function WheelOption({ id }: WheelOptionProps) {
   );
   return (
     <Form.Group as={Row} key={id} className="mb-3 align-items-center">
-      <Col xs={2}>
+      <Col xs={2} md={1} align="left">
         <Form.Control
           type="color"
           size="lg"
@@ -45,7 +45,7 @@ export function WheelOption({ id }: WheelOptionProps) {
           onChange={(e) => updateOptionColour(id, e.target.value)}
         ></Form.Control>
       </Col>
-      <Col xs={10}>
+      <Col xs={10} md={11}>
         <InputGroup>
           <FloatingLabel
             controlId="floatingInput"

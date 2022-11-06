@@ -8,21 +8,21 @@ export function Options() {
   const wheelOptions = getOptions();
 
   return (
-    <Stack>
+    <Stack gap={2} className="col-xs-12 mx-auto text-center">
       <h1>Wheel Options</h1>
+
+      <Button className="mb-3" onClick={() => addDefaultOption()}>
+        Add New Option
+      </Button>
 
       <Form>
         {wheelOptions.map((item) => (
           <WheelOption {...item} key={item.id} />
         ))}
       </Form>
-      <Button className="mb-3" onClick={() => addDefaultOption()}>
-        Add New Option
-      </Button>
-
-      <Button variant="success">
+      <Button className="mb-3" variant="success">
         <Nav.Link to="/wheely-cool-app/wheel" as={NavLink}>
-          Spin the Wheel!
+          Go to Wheel!
         </Nav.Link>
       </Button>
     </Stack>
