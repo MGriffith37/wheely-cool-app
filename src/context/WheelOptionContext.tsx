@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { generateRandomColourHex } from "../utilities/randomGeneratorUtils";
 
 type WheelOptionProviderProps = {
@@ -35,12 +36,17 @@ export function useWheelOption() {
 }
 
 // TODO: needs cleaning up, too many duplicate objects being passed around
+//TODO: Better persistent data than just hooks and local storage (works for demo)
 export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
-  const [wheelOptions, setWheelOptions] = useState<WheelOption[]>([
-    { id: 1, name: "", colour: generateRandomColourHex() },
-  ]);
+  const [wheelOptions, setWheelOptions] = useLocalStorage<WheelOption[]>(
+    "wheel-options",
+    [{ id: 1, name: "", colour: generateRandomColourHex() }]
+  );
 
-  const [wheelPrompt, setWheelPrompt] = useState<WheelPrompt>({ name: "" });
+  const [wheelPrompt, setWheelPrompt] = useLocalStorage<WheelPrompt>(
+    "wheel-prompt",
+    { name: "" }
+  );
 
   function getOptions() {
     return wheelOptions;
@@ -80,8 +86,6 @@ export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
   }
 
   function updateOptionColour(id: number, colour: string) {
-    console.log(colour);
-
     setWheelOptions((currItems) => {
       return currItems.map((item) => {
         //inefficient loop
