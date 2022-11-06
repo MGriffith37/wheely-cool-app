@@ -1,7 +1,7 @@
 // @ts-ignore
 import WheelComponent from "react-wheel-of-prizes";
 import { useWheelOption } from "../context/WheelOptionContext";
-import { Container, Stack, Nav, Col } from "react-bootstrap";
+import { Container, Stack, Nav, Col, Row } from "react-bootstrap";
 
 export function Wheel() {
   const { getOptions } = useWheelOption();
@@ -16,9 +16,8 @@ export function Wheel() {
   return (
     <Stack gap={2} className="col-xs-12 mx-auto text-center">
       <h1>Spin the Wheel</h1>
-      <Col xs={12}>
+      <Row>
         <WheelComponent
-          style={"width : 160%"}
           segments={segments}
           segColors={segmentColours}
           onFinished={(winner: string) => onFinished(winner)}
@@ -26,12 +25,12 @@ export function Wheel() {
           contrastColor="white"
           buttonText="Spin"
           isOnlyOnce={false}
-          size={200}
+          size={180}
           upDuration={100}
           downDuration={1000}
           fontFamily="Arial"
         />
-      </Col>
+      </Row>
     </Stack>
   );
 }
