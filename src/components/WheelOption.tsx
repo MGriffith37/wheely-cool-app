@@ -27,9 +27,7 @@ export function WheelOption({ id }: WheelOptionProps) {
   const option = getOptionName(id);
   const optionColour = getOptionColour(id);
   const optionNumber = getOptionIndex(id) + 1;
-  console.log(
-    `option: ${option} and id: ${id} and optionNumber: ${optionNumber}`
-  );
+
   // TODO: Need to reduce size of component and store child components as their own components
   return (
     <Form.Group as={Row} key={id} className="mb-3 align-items-center">
@@ -55,8 +53,6 @@ export function WheelOption({ id }: WheelOptionProps) {
               onChange={(e) => updateOption(id, e.target.value)}
               autoFocus
               onKeyDown={(event) => {
-                console.log(event.key);
-                console.log(option);
                 if (event.key === "Enter") {
                   addDefaultOption();
                 } else if (
