@@ -16,6 +16,10 @@ export function Options() {
   const wheelOptions = getOptions();
   const wheelPrompt = getPrompt();
 
+  //TODO: Fix button placement to make more sense (probs at bottom of page?)
+  //TODO: Add validation to prompt field so its mandatory before heading away from page
+  //TOOD: Save lists to DB so they persist between devices, need some way of managing lists and user ownership so users only see their own lists
+  //TODO: Session storage to persist data for now?
   return (
     <Stack className="col-xs-12 mx-auto text-center">
       <h1>Ask the Wheel</h1>
