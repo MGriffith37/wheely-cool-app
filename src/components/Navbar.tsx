@@ -5,12 +5,13 @@ export function Navbar() {
   return (
     <NavbarBootstrap sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
+        <NavbarBootstrap.Brand>WHEEL-O-RAMA</NavbarBootstrap.Brand>
         <Nav className="me-auto">
           <Nav.Link to="/wheely-cool-app/" as={NavLink}>
-            Options
+            Question
           </Nav.Link>
           <Nav.Link to="/wheely-cool-app/wheel" as={NavLink}>
-            Wheel
+            Answer
           </Nav.Link>
         </Nav>
       </Container>

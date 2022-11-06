@@ -11,6 +11,10 @@ type WheelOption = {
   colour: string;
 };
 
+type WheelPrompt = {
+  name: string;
+};
+
 type WheelOptionContext = {
   getOptions: () => WheelOption[];
   getOptionIndex: (id: number) => number;
@@ -20,6 +24,8 @@ type WheelOptionContext = {
   updateOption: (id: number, name: string) => void;
   updateOptionColour: (id: number, colour: string) => void;
   removeOption: (id: number) => void;
+  getPrompt: () => string;
+  updatePrompt: (name: string) => void;
 };
 
 const WheelOptionContext = createContext({} as WheelOptionContext);
@@ -33,8 +39,18 @@ export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
     { id: 1, name: "", colour: generateRandomColourHex() },
   ]);
 
+  const [wheelPrompt, setWheelPrompt] = useState<WheelPrompt>({ name: "" });
+
   function getOptions() {
     return wheelOptions;
+  }
+
+  function getPrompt() {
+    return wheelPrompt.name;
+  }
+
+  function updatePrompt(name: string) {
+    setWheelPrompt({ name: name });
   }
 
   function getOptionIndex(id: number) {
@@ -107,6 +123,8 @@ export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
         updateOption,
         updateOptionColour,
         removeOption,
+        getPrompt,
+        updatePrompt,
       }}
     >
       {children}
