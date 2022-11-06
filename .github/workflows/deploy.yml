@@ -20,7 +20,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        uses: ./
+        uses: bahmutov/npm-install@v1
         with:
           install-command: npm ci --legacy-peer-deps
 
