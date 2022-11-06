@@ -30,7 +30,7 @@ export function useWheelOption() {
 
 export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
   const [wheelOptions, setWheelOptions] = useState<WheelOption[]>([
-    { id: 1, name: "", colour: "red" },
+    { id: 1, name: "", colour: generateRandomColourHex() },
   ]);
 
   function getOptions() {
