@@ -1,27 +1,22 @@
 [
     {
         "id" : 1,
-        "name" : "Max",
-        "disabled" : false
+        "name" : "Max"
     },
     {
         "id" : 2,
-        "name" : "John",
-        "disabled" : false
+        "name" : "John"
     },
     {
         "id" : 3,
-        "name" : "Sally",
-        "disabled" : false
+        "name" : "Sally"
     },
     {
         "id" : 4,
-        "name" : "Gary",
-        "disabled" : false
+        "name" : "Gary"
     },
     {
         "id" : 5,
-        "name" : "Anne",
-        "disabled" : true
+        "name" : "Anne"
     }
 ]
