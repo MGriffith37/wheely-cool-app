@@ -35,7 +35,7 @@ export function WheelOption({ id }: WheelOptionProps) {
   );
   return (
     <Form.Group as={Row} key={id} className="mb-3 align-items-center">
-      <Col xs="auto">
+      <Col xs={2}>
         <Form.Control
           type="color"
           size="lg"

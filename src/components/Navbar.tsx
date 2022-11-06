@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 export function Navbar() {
   return (
-    <NavbarBootstrap className="bg-white shadow-sm mb-3">
+    <NavbarBootstrap sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
-        <Nav>
+        <Nav className="me-auto">
           <Nav.Link to="/wheely-cool-app/" as={NavLink}>
             Options
           </Nav.Link>
