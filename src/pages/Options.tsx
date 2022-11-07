@@ -5,14 +5,22 @@ import {
   Nav,
   InputGroup,
   FloatingLabel,
+  ButtonGroup,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { WheelOption } from "../components/WheelOption";
 import { useWheelOption } from "../context/WheelOptionContext";
+import { Wheelorama } from "../components/Wheelorama";
 
 export function Options() {
-  const { addDefaultOption, getOptions, getPrompt, updatePrompt } =
-    useWheelOption();
+  const {
+    addDefaultOption,
+    getOptions,
+    getPrompt,
+    updatePrompt,
+    loadOptions,
+    saveOptions,
+  } = useWheelOption();
   const wheelOptions = getOptions();
   const wheelPrompt = getPrompt();
 
@@ -25,7 +33,8 @@ export function Options() {
       <h1>Ask the Wheel</h1>
       <p>
         Got a choice to make but you just can't decide? Why not take the
-        WHEEL-O-RAMA for a ride?
+        <Wheelorama />
+        for a ride?
       </p>
       <p>
         Feed it a prompt and some options to pick, then give it a spin to find
@@ -62,6 +71,20 @@ export function Options() {
           Ask the Wheel!
         </Nav.Link>
       </Button>
+
+      <ButtonGroup>
+        <Button
+          className="mb-3"
+          variant="warning"
+          onClick={() => loadOptions()}
+        >
+          Load latest Options from DB
+        </Button>
+
+        <Button className="mb-3" variant="info" onClick={() => saveOptions()}>
+          Save Options to DB (shared for all users)
+        </Button>
+      </ButtonGroup>
     </Stack>
   );
 }

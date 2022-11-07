@@ -2,6 +2,10 @@ import { createContext, ReactNode, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { generateRandomColourHex } from "../utilities/randomGeneratorUtils";
 
+// @ts-ignore
+import { db } from "../data/firebase-config.js";
+import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
+
 type WheelOptionProviderProps = {
   children: ReactNode;
 };
@@ -27,9 +31,12 @@ type WheelOptionContext = {
   removeOption: (id: number) => void;
   getPrompt: () => string;
   updatePrompt: (name: string) => void;
+  loadOptions: () => void;
+  saveOptions: () => void;
 };
 
 const WheelOptionContext = createContext({} as WheelOptionContext);
+const wheelOptionsCollectionRef = collection(db, "wheelOptions");
 
 export function useWheelOption() {
   return useContext(WheelOptionContext);
@@ -117,6 +124,28 @@ export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
     });
   }
 
+  function loadOptions() {
+    const getWheelOptions = async () => {
+      const data = await getDocs(wheelOptionsCollectionRef);
+      const latestDoc = data.docs[data.docs.length - 1].data();
+      setWheelOptions(latestDoc.options as any);
+      setWheelPrompt({ name: latestDoc.prompt as any });
+    };
+
+    getWheelOptions();
+  }
+
+  function saveOptions() {
+    const addWheelOptions = async () => {
+      await setDoc(doc(db, "wheelOptions", Date.now().toString()), {
+        prompt: wheelPrompt.name,
+        options: wheelOptions,
+      });
+    };
+
+    addWheelOptions();
+  }
+
   return (
     <WheelOptionContext.Provider
       value={{
@@ -130,6 +159,8 @@ export function WheelOptionProvider({ children }: WheelOptionProviderProps) {
         removeOption,
         getPrompt,
         updatePrompt,
+        loadOptions,
+        saveOptions,
       }}
     >
       {children}
